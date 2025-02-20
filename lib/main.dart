@@ -1,8 +1,6 @@
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
-import 'core/routes/app_routes.dart';
-
 void main() {
   runApp(const MyApp());
 }
