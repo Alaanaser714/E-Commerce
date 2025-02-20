@@ -1,13 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
+import 'package:e_commerce/features/splash/presentation/view/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
-final GoRouter router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreen();
-      },
-    ),
-  ],
-);
+abstract class Routes {
+  static final router = GoRouter(
+    routes: [
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (context, state) {
+          return const SplashScreen();
+        },
+      ),
+    ],
+  );
+}
