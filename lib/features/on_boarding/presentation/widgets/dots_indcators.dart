@@ -8,7 +8,7 @@ class DotsIndcators extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       margin: EdgeInsets.symmetric(horizontal: 5),
       height: 11,
       width: isActive ? 20 : 11,
@@ -17,6 +17,7 @@ class DotsIndcators extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(50),
           )),
+      duration: Duration(milliseconds: 300),
     );
   }
 }

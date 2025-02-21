@@ -1,5 +1,8 @@
+import 'package:e_commerce/core/routes/app_routes.dart';
+import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -8,9 +11,11 @@ class PageViewItem extends StatelessWidget {
       required this.background,
       required this.image,
       required this.title,
-      required this.subtitle});
+      required this.subtitle,
+      required this.isShow});
 
   final String background, image, title, subtitle;
+  final bool isShow;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class PageViewItem extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: SvgPicture.asset(
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   background,
                   color: Color(0xffB0E8C7),
                 ),
@@ -34,17 +39,24 @@ class PageViewItem extends StatelessWidget {
                 right: 0,
                 child: SvgPicture.asset(image),
               ),
-              Positioned(
-                top: 50,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    "تخط",
-                    style: AppStyles.f13w400(context)
-                        .copyWith(color: Color(0xff949D9E)),
-                  ),
-                ),
-              )
+              isShow
+                  ? Positioned(
+                      top: 50,
+                      child: GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).pushReplacement(AppRoutes.login);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            "تخط",
+                            style: AppStyles.f13w400(context)
+                                .copyWith(color: Color(0xff949D9E)),
+                          ),
+                        ),
+                      ),
+                    )
+                  : SizedBox()
             ],
           ),
         ),
