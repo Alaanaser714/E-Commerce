@@ -17,6 +17,8 @@ class Assets {
   static const String Onboarding2 = "assets/images/onboarding2.svg";
 
   static const String Onboarding22 = "assets/images/onboarding22.svg";
+  static const String OnboardingbackGround =
+      "assets/images/onboarding_background.svg";
 
   static const String Splash1 = "assets/images/splash1.svg";
 

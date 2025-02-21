@@ -89,11 +89,11 @@ flutter:
       fonts:
         - asset: assets/fonts/static/Cairo-Regular.ttf
         - asset: assets/fonts/static/Cairo-Medium.ttf
-        - weight: 500
+          weight: 500
         - asset: assets/fonts/static/Cairo-Bold.ttf
-        - weight: 700
+          weight: 700
         - asset: assets/fonts/static/Cairo-SemiBold.ttf
-        - weight: 600
+          weight: 600
 
   #   - family: Trajan Pro
   #     fonts:
