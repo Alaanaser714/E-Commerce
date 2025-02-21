@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/services/shared_pref.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 
 import 'package:e_commerce/features/on_boarding/presentation/widgets/dots_indcators.dart';
@@ -69,6 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 )
               : GestureDetector(
                   onTap: () {
+                    SharedPref.setBool("kIsOnBoardingViewSeen", true);
                     GoRouter.of(context).pushReplacement(AppRoutes.login);
                   },
                   child: CustomButton(

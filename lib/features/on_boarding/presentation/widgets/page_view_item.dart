@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/core/routes/routes.dart';
+import 'package:e_commerce/core/services/shared_pref.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -44,6 +45,7 @@ class PageViewItem extends StatelessWidget {
                       top: 50,
                       child: GestureDetector(
                         onTap: () {
+                          SharedPref.setBool("kIsOnBoardingViewSeen", true);
                           GoRouter.of(context).pushReplacement(AppRoutes.login);
                         },
                         child: Padding(

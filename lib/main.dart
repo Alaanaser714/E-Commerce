@@ -1,8 +1,12 @@
 import 'package:e_commerce/core/routes/routes.dart';
+import 'package:e_commerce/core/services/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPref.init();
+
   runApp(const MyApp());
 }
 
