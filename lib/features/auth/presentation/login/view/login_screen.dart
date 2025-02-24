@@ -7,8 +7,8 @@ import 'package:e_commerce/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce/core/widgets/custom_text_rich.dart';
-import 'package:e_commerce/features/auth/login/presentation/widgets/custom_socail_widgets.dart';
-import 'package:e_commerce/features/auth/login/presentation/widgets/or_divider.dart';
+import 'package:e_commerce/features/auth/presentation/login/widgets/custom_socail_widgets.dart';
+import 'package:e_commerce/features/auth/presentation/login/widgets/or_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
