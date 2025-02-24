@@ -12,7 +12,7 @@ class CustomSocailWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 16),
       child: Container(
         child: Padding(
           padding: const EdgeInsets.all(16),

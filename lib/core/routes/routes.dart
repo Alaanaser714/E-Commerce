@@ -4,6 +4,8 @@ import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_s
 import 'package:e_commerce/features/splash/presentation/view/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/sign_up/presentation/view/sign_up_screen.dart';
+
 abstract class Routes {
   static final router = GoRouter(
     routes: [
@@ -23,6 +25,12 @@ abstract class Routes {
         path: AppRoutes.login,
         builder: (context, state) {
           return const LoginScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.signUp,
+        builder: (context, state) {
+          return const SignUpScreen();
         },
       ),
     ],

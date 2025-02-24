@@ -12,11 +12,16 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 140),
-        child: Text(
-          text,
-          style: AppStyles.f16w700(context).copyWith(color: Colors.white),
+        padding: const EdgeInsets.symmetric(
+          vertical: 14,
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: AppStyles.f16w700(context).copyWith(color: Colors.white),
+          ),
         ),
       ),
       decoration: BoxDecoration(
