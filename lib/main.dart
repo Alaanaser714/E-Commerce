@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routes/routes.dart';
+import 'package:e_commerce/core/services/get_it_services.dart';
 import 'package:e_commerce/core/services/shared_pref.dart';
 import 'package:e_commerce/firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await SharedPref.init();
+  setupGetit();
 
   runApp(const MyApp());
 }

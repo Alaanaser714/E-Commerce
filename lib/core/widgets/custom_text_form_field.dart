@@ -15,6 +15,7 @@ class CustomTextFormField extends StatefulWidget {
     this.controller,
     this.keyboardType,
     required this.hintText,
+    this.onSaved,
   });
   final Widget? suffixIcon;
   final bool isPassword;
@@ -24,6 +25,7 @@ class CustomTextFormField extends StatefulWidget {
   final int? maxLength;
   final TextInputType? keyboardType;
   final String hintText;
+  final void Function(String?)? onSaved;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -43,7 +45,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return TextFormField(
       keyboardType: widget.keyboardType,
       maxLength: widget.maxLength,
-      validator: widget.validator,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "هذا الحقل مطلوب";
+        }
+        return null;
+      },
+      onSaved: widget.onSaved,
       obscureText: widget.isPassword ? isObscured : false,
       decoration: InputDecoration(
         hintText: widget.hintText,

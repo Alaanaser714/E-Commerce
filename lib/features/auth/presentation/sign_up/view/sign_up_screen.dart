@@ -5,6 +5,7 @@ import 'package:e_commerce/features/auth/presentation/cubits/signup_cubits/signu
 import 'package:e_commerce/features/auth/presentation/sign_up/widgets/sign_up_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -19,10 +20,19 @@ class SignUpScreen extends StatelessWidget {
         builder: (context) {
           return BlocConsumer<SignupCubit, SignupState>(
             listener: (context, state) {
-              
+              if (state is SignupSuccess) {
+              } else if (state is SignupFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.message),
+                  ),
+                );
+              }
             },
             builder: (context, state) {
-              return SignUpScreenBody();
+              return ModalProgressHUD(
+                  inAsyncCall: state is SignupLoading ? true : false,
+                  child: SignUpScreenBody());
             },
           );
         },
