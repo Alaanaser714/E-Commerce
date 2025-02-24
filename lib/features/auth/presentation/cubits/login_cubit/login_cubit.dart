@@ -9,13 +9,11 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.authRepo) : super(LoginInitial());
 
   final AuthRepo authRepo;
-  Future<void> loginWithEmailAndPassword(
-      String email, String password, String name) async {
+  Future<void> loginWithEmailAndPassword(String email, String password) async {
     emit(LoginLoading());
     final result = await authRepo.loginUserWithEmailAndPassword(
       email,
       password,
-    
     );
     result.fold(
       (failure) => emit(

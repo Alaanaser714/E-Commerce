@@ -5,6 +5,7 @@ import 'package:e_commerce/features/auth/domain/repo/auth_repo.dart';
 import 'package:e_commerce/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../widgets/login_screen_body.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -43,7 +44,9 @@ class LoginScreen extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return LoginScreenBody();
+            return ModalProgressHUD(
+                inAsyncCall: state is LoginLoading ? true : false,
+                child: LoginScreenBody());
           },
         );
       }),
