@@ -21,4 +21,16 @@ class AuthRepoImpl extends AuthRepo {
       return Left(ServerFailure(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginUserWithEmailAndPassword(
+      String email, String password, String name) async {
+    try {
+      var user = await firebaseServices.LoginUserWithEmailAndPassword(
+          email: email, password: password);
+      return Right(UserModel.fromFirebaseUser(user));
+    } on ClientExeption catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
 }
