@@ -28,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
                   SnackBar(
                     backgroundColor: Colors.green,
                     content: Text(
-                      "تم التسجيل بنجاح",
+                      "تم انشاء الحساب بنجاح",
                       style: AppStyles.f16w400(context),
                     ),
                   ),

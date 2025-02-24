@@ -15,7 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
     final result = await authRepo.loginUserWithEmailAndPassword(
       email,
       password,
-      name,
+    
     );
     result.fold(
       (failure) => emit(
