@@ -1,10 +1,16 @@
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/services/shared_pref.dart';
+import 'package:e_commerce/firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await SharedPref.init();
 
   runApp(const MyApp());
