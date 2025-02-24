@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import 'checked_box_widget.dart';
@@ -21,6 +22,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? name, email, password;
+  late bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +64,11 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                 SizedBox(
                   height: 10,
                 ),
-                CheckedBoxWidget(),
+                CheckedBoxWidget(
+                  onChanged: (value) {
+                    isChecked = value;
+                  },
+                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -70,11 +76,20 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        context
-                            .read<SignupCubit>()
-                            .createUserWithEmailAndPassword(
-                                email!, password!, name!);
-                        GoRouter.of(context).push(AppRoutes.login);
+                        if (isChecked) {
+                          context
+                              .read<SignupCubit>()
+                              .createUserWithEmailAndPassword(
+                                  email!, password!, name!);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: Colors.redAccent,
+                              content: Text("يرجى الموافقة على الشروط والأحكام",
+                                  style: AppStyles.f16w400(context)),
+                            ),
+                          );
+                        }
                       } else {
                         setState(() {
                           autovalidateMode = AutovalidateMode.always;

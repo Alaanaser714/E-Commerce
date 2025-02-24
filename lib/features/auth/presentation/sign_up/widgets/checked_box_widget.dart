@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 
 class CheckedBoxWidget extends StatefulWidget {
-  const CheckedBoxWidget({super.key});
-
+  const CheckedBoxWidget({super.key, required this.onChanged});
+  final ValueChanged<bool>? onChanged;
   @override
   State<CheckedBoxWidget> createState() => _CheckedBoxWidgetState();
 }
@@ -25,6 +25,7 @@ class _CheckedBoxWidgetState extends State<CheckedBoxWidget> {
               setState(() {
                 isChecked = value!;
               });
+              widget.onChanged!(value!);
             },
           ),
         ),
