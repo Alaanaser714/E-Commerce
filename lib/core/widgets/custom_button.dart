@@ -4,11 +4,10 @@ import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton(
-      {super.key, required this.text, required this.pageController});
+  const CustomButton({super.key, required this.text, this.pageController});
 
   final String text;
-  final PageController pageController;
+  final PageController? pageController;
 
   @override
   Widget build(BuildContext context) {
