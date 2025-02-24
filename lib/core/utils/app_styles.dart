@@ -26,8 +26,8 @@ abstract class AppStyles {
 
   static TextStyle f19w700(context) {
     return TextStyle(
-      fontSize: AppFunction.getResponsiveFontSize(context, fontSize: 16),
-      fontWeight: FontWeight.w500,
+      fontSize: AppFunction.getResponsiveFontSize(context, fontSize: 19),
+      fontWeight: FontWeight.w700,
     );
   }
 
