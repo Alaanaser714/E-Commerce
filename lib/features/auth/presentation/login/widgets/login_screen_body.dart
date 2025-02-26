@@ -110,16 +110,21 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                   height: 21,
                 ),
                 CustomSocailWidgets(
+                  onTap: () {
+                    context.read<LoginCubit>().loginWithGoogle();
+                  },
                   image: Assets.Google,
                   text: 'تسجيل بواسطة جوجل',
                 ),
                 CustomSocailWidgets(
                   image: Assets.Apple,
                   text: "تسجيل بواسطة أبل",
+                  onTap: () {},
                 ),
                 CustomSocailWidgets(
                   image: Assets.Face,
                   text: "تسجيل بواسطة فيسبوك",
+                  onTap: () {},
                 ),
               ],
             ),

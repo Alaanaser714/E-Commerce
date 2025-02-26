@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/errors/exeptions.dart';
 import 'package:e_commerce/core/errors/failure.dart';
@@ -40,7 +42,10 @@ class AuthRepoImpl extends AuthRepo {
       var user = await firebaseServices.signInWithGoogle();
       return Right(UserModel.fromFirebaseUser(user));
     } catch (e) {
-      return Left(ServerFailure(message: e.toString()));
+      log(e.toString());
+
+      return Left(
+          ServerFailure(message: "لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى."));
     }
   }
 }
