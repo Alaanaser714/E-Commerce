@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/errors/exeptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseServices {
@@ -71,5 +72,17 @@ class FirebaseServices {
     );
 
     return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
+  }
+/*************  ✨ Codeium Command ⭐  *************/
+/******  226c704a-6e6f-4c0d-b907-d5c619f43cab  *******/
+  Future<User> signInWithFacebook() async {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+
+    return (await FirebaseAuth.instance
+            .signInWithCredential(facebookAuthCredential))
+        .user!;
   }
 }

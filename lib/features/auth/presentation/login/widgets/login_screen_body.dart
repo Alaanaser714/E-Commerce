@@ -124,7 +124,9 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                 CustomSocailWidgets(
                   image: Assets.Face,
                   text: "تسجيل بواسطة فيسبوك",
-                  onTap: () {},
+                  onTap: () {
+                    context.read<LoginCubit>().loginWithfacebook();
+                  },
                 ),
               ],
             ),
