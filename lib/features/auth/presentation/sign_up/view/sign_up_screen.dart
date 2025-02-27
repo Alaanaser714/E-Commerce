@@ -1,4 +1,3 @@
-import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/core/services/get_it_services.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/features/auth/domain/repo/auth_repo.dart';
@@ -33,7 +32,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                 );
-                GoRouter.of(context).push(AppRoutes.login);
+                GoRouter.of(context).pop();
               } else if (state is SignupFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
