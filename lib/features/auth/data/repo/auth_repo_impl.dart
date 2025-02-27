@@ -48,7 +48,9 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseServices.LoginUserWithEmailAndPassword(
           email: email, password: password);
-      return Right(UserModel.fromFirebaseUser(user));
+
+      var userEntity = await getUserData(uid: user.uid);
+      return Right(userEntity);
     } on ClientExeption catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }
@@ -60,7 +62,14 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseServices.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addData(user: userEntity);
+      var isUserExist = await databaseServices.checkIfDataExists(
+          docId: user.uid, path: Endpoints.isUserExists);
+      if (isUserExist) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addData(user: userEntity);
+      }
+
       return Right(userEntity);
     } catch (e) {
       if (user != null) {
@@ -96,6 +105,16 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future addData({required UserEntity user}) async {
     await databaseServices.addData(
-        path: Endpoints.addUserData, data: user.toMap());
+      path: Endpoints.addUserData,
+      data: user.toMap(),
+      docId: user.password,
+    );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    var userData = await databaseServices.getData(
+        docId: uid, path: Endpoints.getUsersData);
+    return UserModel.fromJson(userData);
   }
 }
