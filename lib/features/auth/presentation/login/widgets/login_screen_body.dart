@@ -117,11 +117,6 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                   text: 'تسجيل بواسطة جوجل',
                 ),
                 CustomSocailWidgets(
-                  image: Assets.Apple,
-                  text: "تسجيل بواسطة أبل",
-                  onTap: () {},
-                ),
-                CustomSocailWidgets(
                   image: Assets.Face,
                   text: "تسجيل بواسطة فيسبوك",
                   onTap: () {
