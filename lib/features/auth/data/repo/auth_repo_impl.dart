@@ -29,6 +29,9 @@ class AuthRepoImpl extends AuthRepo {
       await addData(user: userEntity);
       return Right(userEntity);
     } on ClientExeption catch (e) {
+      if (user != null) {
+        await firebaseServices.deleteUser();
+      }
       return Left(ServerFailure(message: e.toString()));
     } catch (e) {
       if (user != null) {
@@ -52,10 +55,17 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> loginWithGoogle() async {
+    User? user;
     try {
       var user = await firebaseServices.signInWithGoogle();
-      return Right(UserModel.fromFirebaseUser(user));
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addData(user: userEntity);
+      return Right(userEntity);
     } catch (e) {
+      if (user != null) {
+        await firebaseServices.deleteUser();
+      }
+
       log(e.toString());
 
       return Left(
@@ -65,10 +75,16 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> loginWithFacebook() async {
+    User? user;
     try {
       var user = await firebaseServices.signInWithFacebook();
-      return Right(UserModel.fromFirebaseUser(user));
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addData(user: userEntity);
+      return Right(userEntity);
     } catch (e) {
+      if (user != null) {
+        await firebaseServices.deleteUser();
+      }
       log(e.toString());
 
       return Left(
