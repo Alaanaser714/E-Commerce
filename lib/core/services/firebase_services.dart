@@ -4,6 +4,10 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseServices {
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
+
   Future<User> CreateUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
@@ -73,8 +77,7 @@ class FirebaseServices {
 
     return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
-/*************  ✨ Codeium Command ⭐  *************/
-/******  226c704a-6e6f-4c0d-b907-d5c619f43cab  *******/
+
   Future<User> signInWithFacebook() async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
