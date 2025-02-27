@@ -6,6 +6,7 @@ import 'package:e_commerce/core/errors/failure.dart';
 import 'package:e_commerce/core/services/database_services.dart';
 import 'package:e_commerce/core/services/endpoints.dart';
 import 'package:e_commerce/core/services/firebase_services.dart';
+import 'package:e_commerce/core/services/firestore_services.dart';
 import 'package:e_commerce/features/auth/data/models/user_model.dart';
 import 'package:e_commerce/features/auth/domain/entities/user_entity.dart';
 import 'package:e_commerce/features/auth/domain/repo/auth_repo.dart';

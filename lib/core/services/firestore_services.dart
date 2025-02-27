@@ -8,4 +8,11 @@ class FirestoreServices implements DatabaseServices {
       {required String path, required Map<String, String> data}) async {
     await firestore.collection(path).add(data);
   }
+
+  @override
+  Future<Map<String, dynamic>> getData(
+      {required String docId, required String path}) async {
+    var data = await firestore.collection(path).doc(docId).get();
+    return data.data() as Map<String, dynamic>;
+  }
 }
