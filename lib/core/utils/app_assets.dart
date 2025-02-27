@@ -25,4 +25,6 @@ class Assets {
   static const String Splash2 = "assets/images/splash2.svg";
 
   static const String SplashBottom = "assets/images/splash_bottom.svg";
+  static const String userImage = "assets/images/userphoto.png";
+  static const String notifaction = "assets/images/notification.svg";
 }
