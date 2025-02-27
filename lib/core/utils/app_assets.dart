@@ -27,4 +27,6 @@ class Assets {
   static const String SplashBottom = "assets/images/splash_bottom.svg";
   static const String userImage = "assets/images/userphoto.png";
   static const String notifaction = "assets/images/notification.svg";
+  static const String searchIcon = "assets/images/search-icon.svg";
+  static const String settingSearch = "assets/images/setting.svg";
 }
