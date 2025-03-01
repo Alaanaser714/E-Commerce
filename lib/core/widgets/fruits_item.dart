@@ -38,6 +38,7 @@ class FruitsItem extends StatelessWidget {
                       width: 100,
                       Assets.offerproductsImage,
                     ),
+                    SizedBox(height: 15),
                     ListTile(
                       title: Text(
                         "بطيخ",
@@ -62,6 +63,16 @@ class FruitsItem extends StatelessWidget {
                                 .copyWith(color: AppColors.secondOrangeColor),
                           ),
                         ]),
+                      ),
+                      trailing: GestureDetector(
+                        onTap: () {},
+                        child: const CircleAvatar(
+                          backgroundColor: AppColors.primaryColor,
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                   ],
