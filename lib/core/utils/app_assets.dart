@@ -29,4 +29,8 @@ class Assets {
   static const String notifaction = "assets/images/notification.svg";
   static const String searchIcon = "assets/images/search-icon.svg";
   static const String settingSearch = "assets/images/setting.svg";
+  static const String offerproductsImage =
+      "assets/images/page_view_item2_image.svg";
+  static const String offerproductsBackground =
+      "assets/images/featured_item_background.svg";
 }
