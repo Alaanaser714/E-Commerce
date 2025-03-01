@@ -1,10 +1,8 @@
 import 'package:e_commerce/features/home/presentation/widgets/best_seller_row.dart';
 import 'package:e_commerce/features/home/presentation/widgets/custom_search_text_field.dart';
-import 'package:e_commerce/features/home/presentation/widgets/friuts_products_list.dart';
+import 'package:e_commerce/features/home/presentation/widgets/best_saller_grid_view.dart';
 import 'package:e_commerce/features/home/presentation/widgets/offer_products_item_list.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/widgets/fruits_item.dart';
 import 'custom_home_app_bar.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -54,7 +52,7 @@ class HomeScreenBody extends StatelessWidget {
                 height: 8,
               ),
             ),
-            FriutsProductsList(),
+            BestSallerGridView(),
           ],
         ),
       ),
