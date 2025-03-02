@@ -1,4 +1,6 @@
+import 'package:e_commerce/core/constant/constant.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
+import 'package:e_commerce/core/services/firebase_services.dart';
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,10 +18,15 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    bool isOnBoardingViewed = SharedPref.getBool("kIsOnBoardingViewSeen");
+    bool isOnBoardingViewed = SharedPref.getBool(kisOnboardingscreenSeen);
     Future.delayed(Duration(seconds: 5), () {
       if (isOnBoardingViewed == true) {
-        GoRouter.of(context).push(AppRoutes.home);
+        var isLogIn = FirebaseServices().isLogin();
+        if (isLogIn) {
+          GoRouter.of(context).push(AppRoutes.home);
+        } else {
+          GoRouter.of(context).push(AppRoutes.login);
+        }
       } else {
         GoRouter.of(context).push(AppRoutes.onBoarding);
       }

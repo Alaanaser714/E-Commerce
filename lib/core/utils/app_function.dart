@@ -1,4 +1,11 @@
+import 'dart:convert';
+
+import 'package:e_commerce/core/constant/constant.dart';
+import 'package:e_commerce/core/services/shared_pref.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/auth/data/models/user_model.dart';
+import '../../features/auth/domain/entities/user_entity.dart';
 
 class AppFunction {
   static double getResponsiveFontSize(BuildContext context,
@@ -22,5 +29,11 @@ class AppFunction {
     } else {
       return width / 1000; //1000
     }
+  }
+
+  UserEntity getUser() {
+    var jsonString = SharedPref.getString(kuserDate);
+    var userEntity = UserModel.fromJson(jsonDecode(jsonString));
+    return userEntity;
   }
 }

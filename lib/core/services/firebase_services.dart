@@ -8,6 +8,10 @@ class FirebaseServices {
     await FirebaseAuth.instance.currentUser!.delete();
   }
 
+  bool isLogin() {
+    return FirebaseAuth.instance.currentUser != null;
+  }
+
   Future<User> CreateUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {

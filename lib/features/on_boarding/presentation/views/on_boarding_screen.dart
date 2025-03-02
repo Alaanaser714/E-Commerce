@@ -6,6 +6,7 @@ import 'package:e_commerce/features/on_boarding/presentation/widgets/on_boarding
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constant/constant.dart';
 import '../../../../core/routes/app_routes.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -70,7 +71,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 )
               : GestureDetector(
                   onTap: () {
-                    SharedPref.setBool("kIsOnBoardingViewSeen", true);
+                    SharedPref.setBool(kisOnboardingscreenSeen, true);
                     GoRouter.of(context).pushReplacement(AppRoutes.login);
                   },
                   child: CustomButton(
