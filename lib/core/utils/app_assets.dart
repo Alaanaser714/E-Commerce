@@ -33,4 +33,8 @@ class Assets {
       "assets/images/page_view_item2_image.svg";
   static const String offerproductsBackground =
       "assets/images/featured_item_background.svg";
+  static const String homeIcon = "assets/images/home.svg";
+  static const String productsIcon = "assets/images/productsIcon.svg";
+  static const String profileIcon = "assets/images/profileIcon.svg";
+  static const String shoppingIcon = "assets/images/shopping-cart.svg";
 }

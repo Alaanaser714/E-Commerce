@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isOnBoardingViewed = SharedPref.getBool("kIsOnBoardingViewSeen");
     Future.delayed(Duration(seconds: 5), () {
       if (isOnBoardingViewed == true) {
-        GoRouter.of(context).push(AppRoutes.login);
+        GoRouter.of(context).push(AppRoutes.home);
       } else {
         GoRouter.of(context).push(AppRoutes.onBoarding);
       }
