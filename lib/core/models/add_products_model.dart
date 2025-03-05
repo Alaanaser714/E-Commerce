@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:e_commerce/core/entities/add_products_entity.dart';
-
+import '../utils/functions/get_avg_rating.dart';
 import 'review_model.dart';
 
 class AddProductsModel {
@@ -9,13 +7,13 @@ class AddProductsModel {
   final String code;
   final String desc;
   final num price;
-  final File image;
+
   final bool isFeatured;
   String? imageUrl;
   final int expirationsMonths;
   final bool isOrganic;
   final int numberOfCalories;
-  final num avgRating = 0;
+  final num avgRating;
   final num ratingCount = 0;
   final int unitAmount;
   final num sellingCount;
@@ -26,18 +24,22 @@ class AddProductsModel {
       required this.code,
       required this.desc,
       required this.price,
-      required this.image,
       required this.isFeatured,
       required this.expirationsMonths,
       required this.numberOfCalories,
       required this.unitAmount,
       this.imageUrl,
+      this.avgRating = 0,
       required this.isOrganic,
       required this.reviews,
       required this.sellingCount});
 
   factory AddProductsModel.fromJson(Map<String, dynamic> json) =>
       AddProductsModel(
+        avgRating: getAvgRating(json['reviews'] != null
+            ? List<ReviewModel>.from(
+                json['reviews'].map((e) => ReviewModel.fromJson(e)))
+            : []),
         name: json['name'],
         code: json['code'],
         desc: json['desc'],
@@ -53,7 +55,6 @@ class AddProductsModel {
                 json['reviews'].map((e) => ReviewModel.fromJson(e)))
             : [],
         sellingCount: json['sellingCount'],
-        image: File(json['image']),
       );
 
   AddProductsEntity toEntity() {
@@ -62,7 +63,6 @@ class AddProductsModel {
       code: code,
       desc: desc,
       price: price,
-      image: image,
       isFeatured: isFeatured,
       isOrganic: isOrganic,
       expirationsMonths: expirationsMonths,

@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/repos/prosucts_repo/products_repo.dart';
+import 'package:e_commerce/core/repos/prosucts_repo/products_repo_impl.dart';
 import 'package:e_commerce/core/services/database_services.dart';
 import 'package:e_commerce/core/services/firebase_services.dart';
 import 'package:e_commerce/core/services/firestore_services.dart';
@@ -14,4 +16,10 @@ void setupGetit() {
     firebaseServices: getIt<FirebaseServices>(),
     databaseServices: getIt<DatabaseServices>(),
   ));
+
+  getIt.registerSingleton<ProductsRepo>(
+    ProductsRepoImpl(
+      getIt<DatabaseServices>(),
+    ),
+  );
 }

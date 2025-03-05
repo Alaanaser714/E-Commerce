@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/features/auth/presentation/login/view/login_screen.dart';
-import 'package:e_commerce/features/home/presentation/view/home_screen.dart';
+import 'package:e_commerce/features/home/presentation/view/main_screen.dart';
+import 'package:e_commerce/features/home/presentation/widgets/home_screen.dart';
 import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:e_commerce/features/splash/presentation/view/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -32,6 +33,12 @@ abstract class Routes {
         path: AppRoutes.signUp,
         builder: (context, state) {
           return const SignUpScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.mainScreen,
+        builder: (context, state) {
+          return const MainScreen();
         },
       ),
       GoRoute(

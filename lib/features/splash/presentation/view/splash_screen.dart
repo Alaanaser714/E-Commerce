@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (isOnBoardingViewed == true) {
         var isLogIn = FirebaseServices().isLogin();
         if (isLogIn) {
-          GoRouter.of(context).push(AppRoutes.home);
+          GoRouter.of(context).push(AppRoutes.mainScreen);
         } else {
           GoRouter.of(context).push(AppRoutes.login);
         }

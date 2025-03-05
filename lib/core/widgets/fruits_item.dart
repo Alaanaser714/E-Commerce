@@ -1,12 +1,15 @@
+import 'package:e_commerce/core/entities/add_products_entity.dart';
+import 'package:e_commerce/core/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
-import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
 
 class FruitsItem extends StatelessWidget {
-  const FruitsItem({super.key});
+  const FruitsItem({super.key, required this.addProductsEntity});
+
+  final AddProductsEntity addProductsEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -33,22 +36,26 @@ class FruitsItem extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      height: 130,
-                      width: 100,
-                      Assets.offerproductsImage,
-                    ),
+                    addProductsEntity.imageUrl != null
+                        ? Flexible(
+                            child: CustomNetworkImage(
+                                imageUrl: addProductsEntity.imageUrl!))
+                        : Container(
+                            color: Colors.grey,
+                            height: 100,
+                            width: 100,
+                          ),
                     SizedBox(height: 15),
                     ListTile(
                       title: Text(
-                        "بطيخ",
+                        addProductsEntity.name,
                         style: AppStyles.f16w400(context)
                             .copyWith(color: AppColors.blackColor),
                       ),
                       subtitle: RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                            text: "20جنية",
+                            text: "${addProductsEntity.price}جنية",
                             style: AppStyles.f13w700(context)
                                 .copyWith(color: AppColors.orangeColor),
                           ),
@@ -58,7 +65,7 @@ class FruitsItem extends StatelessWidget {
                                 .copyWith(color: AppColors.orangeColor),
                           ),
                           TextSpan(
-                            text: " الكيلو",
+                            text: " كيلو",
                             style: AppStyles.f13w700(context)
                                 .copyWith(color: AppColors.secondOrangeColor),
                           ),

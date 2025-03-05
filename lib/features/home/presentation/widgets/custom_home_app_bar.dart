@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_function.dart';
+import 'package:e_commerce/core/utils/functions/app_function.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_function.dart';
+import 'functions/app_function.dart';
 
 abstract class AppStyles {
   static TextStyle f23w700(context) {
