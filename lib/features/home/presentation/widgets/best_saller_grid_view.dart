@@ -16,7 +16,7 @@ class BestSallerGridView extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: FruitsItem(),
           );
         });

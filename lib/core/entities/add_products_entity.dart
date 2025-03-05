@@ -1,0 +1,35 @@
+import 'dart:io';
+
+import 'package:e_commerce/core/entities/review_entity.dart';
+
+class AddProductsEntity {
+  final String name;
+  final String code;
+  final String desc;
+  final num price;
+  final File image;
+  final bool isFeatured;
+  String? imageUrl;
+  final int expirationsMonths;
+  final bool isOrganic;
+  final int numberOfCalories;
+  final num avgRating = 0;
+  final num ratingCount = 0;
+  final int unitAmount;
+  final List<ReviewEntity> reviews;
+
+  AddProductsEntity({
+    required this.name,
+    required this.code,
+    required this.desc,
+    required this.price,
+    required this.image,
+    required this.isFeatured,
+    this.imageUrl,
+    this.isOrganic = false,
+    required this.expirationsMonths,
+    required this.numberOfCalories,
+    required this.unitAmount,
+    required this.reviews,
+  });
+}
