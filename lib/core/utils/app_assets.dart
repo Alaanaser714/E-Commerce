@@ -37,4 +37,5 @@ class Assets {
   static const String productsIcon = "assets/images/productsIcon.svg";
   static const String profileIcon = "assets/images/profileIcon.svg";
   static const String shoppingIcon = "assets/images/shopping-cart.svg";
+  static const String arrow = "assets/images/arrow-swap-horizontal.svg";
 }

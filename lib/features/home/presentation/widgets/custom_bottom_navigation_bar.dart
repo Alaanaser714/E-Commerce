@@ -1,3 +1,5 @@
+import 'package:e_commerce/features/home/presentation/view/products_screen.dart';
+import 'package:e_commerce/features/home/presentation/widgets/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -15,69 +17,58 @@ class CustomBottomNavigationBar extends StatefulWidget {
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int selectedItem = 0;
 
+  final List<Widget> pages = [
+    HomeScreen(),
+    ProductsScreen(),
+    SizedBox(
+      child: Text("data2"),
+    ),
+    SizedBox(
+      child: Text("data3"),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      selectedFontSize: 15,
-      selectedItemColor: AppColors.primaryColor,
-      unselectedFontSize: 15,
-      unselectedItemColor: Colors.grey,
-      currentIndex: selectedItem,
-      onTap: (index) {
-        setState(() {
-          selectedItem = index;
-        });
-      },
-      items: [
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            Assets.homeIcon,
-            height: 20,
-            width: 20,
-            colorFilter: ColorFilter.mode(
-              selectedItem == 0 ? AppColors.primaryColor : Colors.grey,
-              BlendMode.srcIn,
-            ),
-          ),
-          label: 'الرئيسية',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            Assets.productsIcon,
-            height: 20,
-            width: 20,
-            colorFilter: ColorFilter.mode(
-              selectedItem == 1 ? AppColors.primaryColor : Colors.grey,
-              BlendMode.srcIn,
-            ),
-          ),
-          label: 'المنتجات',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            Assets.shoppingIcon,
-            height: 20,
-            width: 20,
-            colorFilter: ColorFilter.mode(
-              selectedItem == 2 ? AppColors.primaryColor : Colors.grey,
-              BlendMode.srcIn,
-            ),
-          ),
-          label: 'سلة التسوق',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            Assets.profileIcon,
-            height: 20,
-            width: 20,
-            colorFilter: ColorFilter.mode(
-              selectedItem == 3 ? AppColors.primaryColor : Colors.grey,
-              BlendMode.srcIn,
-            ),
-          ),
-          label: 'حسابي',
-        ),
-      ],
+    return Scaffold(
+      body: IndexedStack(
+        index: selectedItem,
+        children: pages,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 15,
+        selectedItemColor: AppColors.primaryColor,
+        unselectedFontSize: 15,
+        unselectedItemColor: Colors.grey,
+        currentIndex: selectedItem,
+        onTap: (index) {
+          setState(() {
+            selectedItem = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+              icon: _buildIcon(Assets.homeIcon, 0), label: 'الرئيسية'),
+          BottomNavigationBarItem(
+              icon: _buildIcon(Assets.productsIcon, 1), label: 'المنتجات'),
+          BottomNavigationBarItem(
+              icon: _buildIcon(Assets.shoppingIcon, 2), label: 'سلة التسوق'),
+          BottomNavigationBarItem(
+              icon: _buildIcon(Assets.profileIcon, 3), label: 'حسابي'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIcon(String asset, int index) {
+    return SvgPicture.asset(
+      asset,
+      height: 20,
+      width: 20,
+      colorFilter: ColorFilter.mode(
+        selectedItem == index ? AppColors.primaryColor : Colors.grey,
+        BlendMode.srcIn,
+      ),
     );
   }
 }

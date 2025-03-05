@@ -1,4 +1,3 @@
-import 'package:e_commerce/features/home/presentation/widgets/best_saller_grid_view.dart';
 import 'package:e_commerce/features/home/presentation/widgets/best_seller_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,48 +25,51 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: CustomHomeAppBar(),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 16,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 30),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: CustomHomeAppBar(),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: CustomSearchTextField(),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 16,
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 16,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomSearchTextField(),
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: OfferProductsItemList(),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 16,
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 12,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: OfferProductsItemList(),
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: BestSellerRow(),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 8,
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 12,
+              ),
             ),
-          ),
-          BestSellerGridViewBlocBuilder(),
-        ],
+            SliverToBoxAdapter(
+              child: BestSellerRow(),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 8,
+              ),
+            ),
+            BestSellerGridViewBlocBuilder(),
+          ],
+        ),
       ),
     );
   }

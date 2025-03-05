@@ -6,8 +6,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Widget? leading;
 
-  const CustomAppBar(
-      {super.key, required this.title, this.actions, this.leading});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.actions,
+    this.leading,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +19,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title, style: AppStyles.f19w700(context)),
       centerTitle: true,
       actions: actions,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(Icons.arrow_back_ios),
-      ),
+      leading: leading ??
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
     );
   }
 
