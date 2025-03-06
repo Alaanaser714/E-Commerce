@@ -1,7 +1,9 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/widgets/custom_network_image.dart';
 import 'package:e_commerce/features/home/domain/entities/cart_item_entity.dart';
+import 'package:e_commerce/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_styles.dart';
 
@@ -85,7 +87,9 @@ class CartItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<CartCubit>().deleteCarItem(cartItemEntity);
+                },
                 icon: Icon(
                   Icons.delete,
                   color: AppColors.primaryColor,

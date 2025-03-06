@@ -29,6 +29,12 @@ class MainScreenBodyBLoc extends StatelessWidget {
               ),
             )),
           );
+        } else if (state is CartItemRemoved) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('تم حذف المنتج',
+                  style: AppStyles.f19w700(context).copyWith(
+                    color: Colors.red,
+                  ))));
         }
       },
       child: MainScreenBody(selectedItem: selectedItem, pages: pages),

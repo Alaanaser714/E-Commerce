@@ -30,7 +30,7 @@ class CartScreenBody extends StatelessWidget {
                   SliverToBoxAdapter(child: CartHeader()),
                   SliverToBoxAdapter(child: SizedBox(height: 20)),
                   CartItemList(
-                    cartItems: [],
+                    cartItems: context.watch<CartCubit>().cartEntity.cartItems,
                   ),
                 ],
               ),
