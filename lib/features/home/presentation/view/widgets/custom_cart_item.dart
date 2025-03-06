@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../cubits/cart_cubit/cart_cubit.dart';
 import '../../cubits/cart_item_cubit/cart_item_cubit.dart';
@@ -19,7 +21,9 @@ class CustomCartButton extends StatelessWidget {
           height: 60,
           text:
               "الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه",
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRoutes.checkout);
+          },
         );
       },
     );
