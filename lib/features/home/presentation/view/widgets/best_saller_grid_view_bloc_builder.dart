@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/cubits/products_cubit/products_cubit.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/utils/functions/get_dummy_products.dart';
-import 'package:e_commerce/features/home/presentation/widgets/best_saller_grid_view.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/best_saller_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';

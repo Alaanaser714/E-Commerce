@@ -1,5 +1,4 @@
 import 'package:e_commerce/core/routes/app_routes.dart';
-import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/services/shared_pref.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';

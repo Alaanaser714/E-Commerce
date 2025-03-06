@@ -5,7 +5,7 @@ import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
-import '../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_assets.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({

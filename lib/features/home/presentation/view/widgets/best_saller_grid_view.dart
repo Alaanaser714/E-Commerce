@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/entities/add_products_entity.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/fruits_item.dart';
+import '../../../../../core/widgets/fruits_item.dart';
 
 class BestSallerGridView extends StatelessWidget {
   const BestSallerGridView({super.key, required this.products});

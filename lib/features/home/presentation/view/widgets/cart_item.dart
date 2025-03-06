@@ -1,11 +1,14 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/widgets/custom_network_image.dart';
+import 'package:e_commerce/features/home/domain/entities/cart_item_entity.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({super.key, required this.cartItemEntity});
+
+  final CartItemEntity cartItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +24,8 @@ class CartItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: CustomNetworkImage(
-                imageUrl:
-                    "https://static.webteb.net/images/content/slideshow_slideshow_2325_7773b82ffc7-4a3a-4ad3-98dc-6de03c62bc37.jpg"),
+              imageUrl: cartItemEntity.addProductsEntity.imageUrl!,
+            ),
           ),
           SizedBox(
             width: 16,
@@ -30,14 +33,14 @@ class CartItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("بطيخ",
+              Text(cartItemEntity.addProductsEntity.name,
                   style: AppStyles.f13w700(context).copyWith(
                     color: AppColors.blackColor,
                   )),
               SizedBox(
                 height: 5,
               ),
-              Text("3 كم",
+              Text("${cartItemEntity.calculateTotalWeight()} كم",
                   style: AppStyles.f13w700(context).copyWith(
                     color: AppColors.orangeColor,
                   )),
@@ -88,7 +91,7 @@ class CartItem extends StatelessWidget {
                   color: AppColors.primaryColor,
                 ),
               ),
-              Text("60 جنيه ",
+              Text("${cartItemEntity.calculateTotalPrice()} جنيه ",
                   style: AppStyles.f16w700(context).copyWith(
                     color: AppColors.orangeColor,
                   )),

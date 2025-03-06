@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/home/presentation/widgets/offer_products_item.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/offer_products_item.dart';
 import 'package:flutter/material.dart';
 
 class OfferProductsItemList extends StatelessWidget {

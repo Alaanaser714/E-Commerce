@@ -1,8 +1,11 @@
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
-import 'package:e_commerce/features/home/presentation/widgets/cart_header.dart';
-import 'package:e_commerce/features/home/presentation/widgets/cart_item_list.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/cart_header.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/cart_item_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../cubits/cart_cubit/cart_cubit.dart';
 
 class CartScreenBody extends StatelessWidget {
   const CartScreenBody({super.key});
@@ -26,7 +29,9 @@ class CartScreenBody extends StatelessWidget {
                   SliverToBoxAdapter(child: SizedBox(height: 16)),
                   SliverToBoxAdapter(child: CartHeader()),
                   SliverToBoxAdapter(child: SizedBox(height: 20)),
-                  CartItemList(),
+                  CartItemList(
+                    cartItems: [],
+                  ),
                 ],
               ),
             ),
@@ -36,7 +41,8 @@ class CartScreenBody extends StatelessWidget {
               bottom: 20,
               child: CustomButton(
                 height: 60,
-                text: "الدفع 120 جنيه",
+                text:
+                    "الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه",
                 onTap: () {},
               ),
             ),

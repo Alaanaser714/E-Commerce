@@ -1,13 +1,13 @@
 import 'package:e_commerce/core/cubits/products_cubit/products_cubit.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
-import 'package:e_commerce/features/home/presentation/widgets/best_saller_grid_view_bloc_builder.dart';
-import 'package:e_commerce/features/home/presentation/widgets/custom_search_text_field.dart';
-import 'package:e_commerce/features/home/presentation/widgets/products_screen_header.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/best_saller_grid_view_bloc_builder.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/custom_search_text_field.dart';
+import 'package:e_commerce/features/home/presentation/view/widgets/products_screen_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg.dart';
 
-import '../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_assets.dart';
 
 class ProductsScreenBody extends StatefulWidget {
   const ProductsScreenBody({super.key});

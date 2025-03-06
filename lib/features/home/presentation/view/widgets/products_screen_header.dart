@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 class ProductsScreenHeader extends StatelessWidget {
   const ProductsScreenHeader({super.key, required this.productsLength});
