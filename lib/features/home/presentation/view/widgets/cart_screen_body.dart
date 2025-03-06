@@ -1,11 +1,10 @@
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
-import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/home/presentation/view/widgets/cart_header.dart';
 import 'package:e_commerce/features/home/presentation/view/widgets/cart_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../cubits/cart_cubit/cart_cubit.dart';
+import 'custom_cart_item.dart';
 
 class CartScreenBody extends StatelessWidget {
   const CartScreenBody({super.key});
@@ -39,12 +38,7 @@ class CartScreenBody extends StatelessWidget {
               left: 10,
               right: 10,
               bottom: 20,
-              child: CustomButton(
-                height: 60,
-                text:
-                    "الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه",
-                onTap: () {},
-              ),
+              child: CustomCartButton(),
             ),
           ],
         ),
