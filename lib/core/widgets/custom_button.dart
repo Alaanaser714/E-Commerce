@@ -5,18 +5,26 @@ import '../utils/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, required this.text, this.pageController, this.onTap});
+      {super.key,
+      required this.text,
+      this.pageController,
+      this.onTap,
+      this.height,
+      this.width});
 
   final String text;
   final PageController? pageController;
   final void Function()? onTap;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: double.infinity,
+        width: width ?? double.infinity,
+        height: height,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 14,

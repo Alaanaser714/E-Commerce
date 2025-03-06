@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/home/presentation/view/cart_screen.dart';
 import 'package:e_commerce/features/home/presentation/view/products_screen.dart';
 import 'package:e_commerce/features/home/presentation/widgets/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   final List<Widget> pages = [
     HomeScreen(),
     ProductsScreen(),
-    SizedBox(
-      child: Text("data2"),
-    ),
+    CartScreen(),
     SizedBox(
       child: Text("data3"),
     ),

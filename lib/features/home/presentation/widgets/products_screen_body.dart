@@ -1,7 +1,6 @@
 import 'package:e_commerce/core/cubits/products_cubit/products_cubit.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce/features/home/presentation/widgets/best_saller_grid_view_bloc_builder.dart';
-import 'package:e_commerce/features/home/presentation/widgets/best_seller_row.dart';
 import 'package:e_commerce/features/home/presentation/widgets/custom_search_text_field.dart';
 import 'package:e_commerce/features/home/presentation/widgets/products_screen_header.dart';
 import 'package:flutter/material.dart';
