@@ -38,4 +38,6 @@ class Assets {
   static const String profileIcon = "assets/images/profileIcon.svg";
   static const String shoppingIcon = "assets/images/shopping-cart.svg";
   static const String arrow = "assets/images/arrow-swap-horizontal.svg";
+  static const String locationIcon = "assets/images/location.png";
+  static const String editIcon = "assets/images/edit.png";
 }

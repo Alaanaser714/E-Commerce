@@ -48,9 +48,9 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
             child: ChekoutPageView(pageController: pageController),
           ),
           CustomButton(
-              text: "التالي",
+              text: getNextButtonText(currentPageIndex),
               onTap: () {
-                pageController.nextPage(
+                pageController.animateToPage(currentPageIndex + 1,
                     duration: Duration(milliseconds: 300),
                     curve: Curves.easeIn);
               }),
@@ -60,5 +60,18 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
         ],
       ),
     );
+  }
+
+  String getNextButtonText(int currentPageIndex) {
+    switch (currentPageIndex) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'الدفع عبر PayPal';
+      default:
+        return 'التالي';
+    }
   }
 }
