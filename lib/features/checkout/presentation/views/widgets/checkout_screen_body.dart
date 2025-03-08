@@ -1,6 +1,9 @@
+import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
+import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'checkout_page_view.dart';
 
@@ -50,9 +53,19 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
           CustomButton(
               text: getNextButtonText(currentPageIndex),
               onTap: () {
-                pageController.animateToPage(currentPageIndex + 1,
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeIn);
+                if (context.read<OrderInputEntity>().payWithCash != null) {
+                  pageController.animateToPage(currentPageIndex + 1,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                      'يرجى اختيار طريقة الدفع',
+                      style: AppStyles.f19w700(context)
+                          .copyWith(color: Colors.redAccent),
+                    ),
+                  ));
+                }
               }),
           SizedBox(
             height: MediaQuery.sizeOf(context).height * .1,

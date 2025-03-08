@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +23,18 @@ class CustomCartButton extends StatelessWidget {
           text:
               "الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه",
           onTap: () {
-            GoRouter.of(context).push(AppRoutes.checkout);
+            if (context.read<CartCubit>().cartEntity.cartItems.isNotEmpty) {
+              GoRouter.of(context).push(AppRoutes.checkout,
+                  extra: context.read<CartCubit>().cartEntity);
+            } else if (context.read<CartCubit>().cartEntity.cartItems.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                backgroundColor: Colors.redAccent,
+                content: Text(
+                  "لا يوجد منتجات في سلة التسوق",
+                  style: AppStyles.f19w700(context).copyWith(),
+                ),
+              ));
+            }
           },
         );
       },

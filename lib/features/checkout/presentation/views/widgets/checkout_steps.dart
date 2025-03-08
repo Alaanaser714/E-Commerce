@@ -1,5 +1,9 @@
 import 'package:e_commerce/features/checkout/presentation/views/widgets/step_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/utils/app_styles.dart';
+import '../../../domain/entities/order_entity.dart';
 
 class CheckoutSteps extends StatelessWidget {
   const CheckoutSteps(
@@ -18,7 +22,17 @@ class CheckoutSteps extends StatelessWidget {
         return Expanded(
           child: GestureDetector(
             onTap: () {
-              onTap(index);
+              if (context.read<OrderInputEntity>().payWithCash != null) {
+                onTap(index);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                    'يرجى اختيار طريقة الدفع',
+                    style: AppStyles.f19w700(context)
+                        .copyWith(color: Colors.redAccent),
+                  ),
+                ));
+              }
             },
             child: StepItem(
               isActive: index <= currentPageIndex,
