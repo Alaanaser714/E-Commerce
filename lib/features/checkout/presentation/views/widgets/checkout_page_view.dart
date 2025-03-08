@@ -1,6 +1,7 @@
 import 'package:e_commerce/features/checkout/presentation/views/widgets/shapping_section.dart';
 import 'package:flutter/material.dart';
 
+import 'address_input_section.dart';
 import 'checkout_steps.dart';
 
 class ChekoutPageView extends StatelessWidget {
@@ -28,7 +29,7 @@ class ChekoutPageView extends StatelessWidget {
   List<Widget> getPages() {
     return [
       ShappingSection(),
-      SizedBox(),
+     AddressInputSection(),
       SizedBox(),
     ];
   }
