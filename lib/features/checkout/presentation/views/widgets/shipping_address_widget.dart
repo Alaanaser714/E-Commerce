@@ -1,14 +1,18 @@
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_assets.dart';
+import '../../../domain/entities/order_entity.dart';
 import 'payment_item.dart';
 
 class ShippingAddressWidget extends StatelessWidget {
   const ShippingAddressWidget({
     super.key,
+    required this.pageController,
   });
+
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class ShippingAddressWidget extends StatelessWidget {
             width: 8,
           ),
           Text(
-            ' شارع القاهرة، مصر',
+            ' ${context.read<OrderInputEntity>().shippingAddressEntity}',
             textAlign: TextAlign.right,
             style: AppStyles.f13w400(context).copyWith(
               color: const Color(0xFF4E5556),
@@ -29,7 +33,11 @@ class ShippingAddressWidget extends StatelessWidget {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              pageController.animateToPage(1,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn);
+            },
             child: SizedBox(
               child: Row(
                 children: [

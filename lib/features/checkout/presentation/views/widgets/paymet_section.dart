@@ -4,7 +4,8 @@ import 'order_summry_widget.dart';
 import 'shipping_address_widget.dart';
 
 class PaymetSection extends StatelessWidget {
-  const PaymetSection({super.key});
+  const PaymetSection({super.key, required this.pageController});
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,9 @@ class PaymetSection extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          ShippingAddressWidget(),
+          ShippingAddressWidget(
+            pageController: pageController,
+          ),
         ],
       ),
     );

@@ -10,7 +10,8 @@ class ChekoutPageView extends StatelessWidget {
   const ChekoutPageView({
     super.key,
     required this.pageController,
-    required this.formKey, required this.valueListenable,
+    required this.formKey,
+    required this.valueListenable,
   });
   final PageController pageController;
   final ValueListenable<AutovalidateMode> valueListenable;
@@ -37,7 +38,9 @@ class ChekoutPageView extends StatelessWidget {
         formKey: formKey,
         valueListenable: valueListenable,
       ),
-      PaymetSection(),
+      PaymetSection(
+        pageController: pageController,
+      ),
     ];
   }
 }
