@@ -15,6 +15,7 @@ class CheckoutScreen extends StatelessWidget {
         title: "الشحن",
       ),
       body: Provider.value(
+        
         value: OrderInputEntity(cartEntity: cartEntity),
         child: CheckoutScreenBody(),
       ),
