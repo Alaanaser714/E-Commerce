@@ -25,7 +25,7 @@ class AddressInputSection extends StatelessWidget {
               CustomTextFormField(
                 hintText: "الاسم كامل",
                 onSaved: (value) {
-                  context.read<OrderInputEntity>().shippingAddressEntity!.name =
+                  context.read<OrderInputEntity>().shippingAddressEntity.name =
                       value;
                 },
               ),
@@ -34,7 +34,7 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context
                       .read<OrderInputEntity>()
-                      .shippingAddressEntity!
+                      .shippingAddressEntity
                       .email = value;
                 },
               ),
@@ -43,7 +43,7 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context
                       .read<OrderInputEntity>()
-                      .shippingAddressEntity!
+                      .shippingAddressEntity
                       .phone = value;
                 },
               ),
@@ -52,14 +52,14 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context
                       .read<OrderInputEntity>()
-                      .shippingAddressEntity!
+                      .shippingAddressEntity
                       .address = value;
                 },
               ),
               CustomTextFormField(
                 hintText: "المدينه",
                 onSaved: (value) {
-                  context.read<OrderInputEntity>().shippingAddressEntity!.city =
+                  context.read<OrderInputEntity>().shippingAddressEntity.city =
                       value;
                 },
               ),
@@ -68,7 +68,7 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context
                       .read<OrderInputEntity>()
-                      .shippingAddressEntity!
+                      .shippingAddressEntity
                       .floor = value;
                 },
               ),

@@ -31,11 +31,7 @@ class AppFunction {
     }
   }
 
-  UserEntity getUser() {
-    var jsonString = SharedPref.getString(kuserDate);
-    var userEntity = UserModel.fromJson(jsonDecode(jsonString));
-    return userEntity;
-  }
+ 
 
   
 

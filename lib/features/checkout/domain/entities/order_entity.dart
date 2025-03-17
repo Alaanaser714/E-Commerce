@@ -1,17 +1,16 @@
-import 'package:e_commerce/features/home/domain/entities/cart_entity.dart';
-
+import '../../../home/domain/entities/cart_entity.dart';
 import 'shipping_address_entity.dart';
 
 class OrderInputEntity {
-  final String? uID;
+  final String uID;
   final CartEntity cartEntity;
   bool? payWithCash;
-  ShippingAddressEntity? shippingAddressEntity;
-  OrderInputEntity({
-    required this.cartEntity,
+  ShippingAddressEntity shippingAddressEntity;
+  OrderInputEntity(
+    this.cartEntity, {
     this.payWithCash,
-    this.shippingAddressEntity,
-    this.uID,
+    required this.shippingAddressEntity,
+    required this.uID,
   });
 
   double calculateShippingCost() {

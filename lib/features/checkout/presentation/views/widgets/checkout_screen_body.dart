@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
@@ -6,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 
+import '../../../domain/entities/paypal_entity/paypal_payment_entity.dart';
+import '../../cubit/add_order_cubit/add_order_cubit.dart';
 import 'checkout_page_view.dart';
 
 class CheckoutScreenBody extends StatefulWidget {
@@ -145,52 +149,45 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
   }
 
   void _processPayment(BuildContext context) {
+    var orderEntity = context.read<OrderInputEntity>();
+    PaypalPaymentEntity paypalPaymentEntity =
+        PaypalPaymentEntity.fromEntity(orderEntity);
+    var addOrderCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId: "",
-        secretKey: "",
-        transactions: const [
-          {
-            "amount": {
-              "total": '70',
-              "currency": "USD",
-              "details": {
-                "subtotal": '70',
-                "shipping": '0',
-                "shipping_discount": 0
-              }
-            },
-            "description": "The payment transaction description.",
-            // "payment_options": {
-            //   "allowed_payment_method":
-            //       "INSTANT_FUNDING_SOURCE"
-            // },
-            "item_list": {
-              "items": [
-                {
-                  "name": "Apple",
-                  "quantity": 4,
-                  "price": '5',
-                  "currency": "USD"
-                },
-                {
-                  "name": "Pineapple",
-                  "quantity": 5,
-                  "price": '10',
-                  "currency": "USD"
-                }
-              ],
-            }
-          }
+        clientId:
+            "AVyYxxMGx7gEUIkvppiIpBTXo3SlnwYKgS75NPQi2HhWsDTiRjOjlPUJzglZX5mtTshYHv_q5_WK0mqw",
+        secretKey:
+            "EGo5evoD5PVjy9qavuFZeRx9zRXH73W77f4VacMj8TsDVEgqSpVdwBKl9S3gqcRTiQgVxYEbNSfuyvs2",
+        transactions: [
+          paypalPaymentEntity.toJson(),
         ],
         note: "Contact us for any questions on your order.",
         onSuccess: (Map params) async {
-          print("onSuccess: $params");
+          Navigator.pop(context);
+          addOrderCubit.addOrder(order: orderEntity);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "تمت العمليه بنجاح",
+                style: AppStyles.f19w700(context).copyWith(color: Colors.green),
+              ),
+            ),
+          );
         },
         onError: (error) {
-          print("onError: $error");
           Navigator.pop(context);
+          log(error.toString());
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                error.toString(),
+                style: AppStyles.f19w700(context)
+                    .copyWith(color: Colors.redAccent),
+              ),
+            ),
+          );
         },
         onCancel: () {
           print('cancelled:');

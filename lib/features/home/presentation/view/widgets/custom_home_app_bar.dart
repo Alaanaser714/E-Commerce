@@ -1,9 +1,10 @@
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/functions/app_function.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
+
+import '../../../../../core/utils/functions/get_user.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -19,7 +20,7 @@ class CustomHomeAppBar extends StatelessWidget {
         style: AppStyles.f16w400(context).copyWith(color: Colors.grey),
       ),
       subtitle: Text(
-        AppFunction().getUser().name,
+        getUser().name,
         style: AppStyles.f16w700(context).copyWith(color: AppColors.blackColor),
       ),
       trailing: Container(

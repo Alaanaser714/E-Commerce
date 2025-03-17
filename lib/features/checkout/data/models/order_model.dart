@@ -1,10 +1,8 @@
-
 import 'package:uuid/uuid.dart';
 
 import '../../domain/entities/order_entity.dart';
 import 'order_product_model.dart';
 import 'shipping_address_model.dart';
-
 
 class OrderModel {
   final double totalPrice;
@@ -25,9 +23,9 @@ class OrderModel {
     return OrderModel(
       orderId: const Uuid().v4(),
       totalPrice: orderEntity.cartEntity.calculateTotalPrice(),
-      uId: orderEntity.uID!,
+      uId: orderEntity.uID,
       shippingAddressModel:
-          ShippingAddressModel.fromEntity(orderEntity.shippingAddressEntity!),
+          ShippingAddressModel.fromEntity(orderEntity.shippingAddressEntity),
       orderProducts: orderEntity.cartEntity.cartItems
           .map((e) => OrderProductModel.fromEntity(
                 cartItemEntity: e,

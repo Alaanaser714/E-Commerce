@@ -8,14 +8,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../core/repos/order_repo/orders_repo.dart';
 import '../../../../core/utils/app_styles.dart';
+import '../../../../core/utils/functions/get_user.dart';
+import '../../domain/entities/shipping_address_entity.dart';
 
-class CheckoutScreen extends StatelessWidget {
+class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key, required this.cartEntity});
 
   final CartEntity cartEntity;
+
+  @override
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
+}
+
+class _CheckoutScreenState extends State<CheckoutScreen> {
+  late OrderInputEntity orderEntity;
+  @override
+  void initState() {
+    super.initState();
+    orderEntity = OrderInputEntity(
+      uID: getUser().password,
+      widget.cartEntity,
+      shippingAddressEntity: ShippingAddressEntity(),
+    );
+  }
+
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddOrderCubit(
@@ -26,7 +44,7 @@ class CheckoutScreen extends StatelessWidget {
           title: "الشحن",
         ),
         body: Provider.value(
-          value: OrderInputEntity(cartEntity: cartEntity),
+          value: orderEntity,
           child: BlocConsumer<AddOrderCubit, AddOrderState>(
             listener: (context, state) {
               if (state is AddOrderSuccess) {
